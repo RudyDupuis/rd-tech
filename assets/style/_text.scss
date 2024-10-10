@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'font-bold';
+  src: url(../fonts/Kodchasan-Bold.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: 'font-medium';
+  src: url(../fonts/Kodchasan-Medium.ttf);
+  font-display: swap;
+}
+@font-face {
+  font-family: 'font-regular';
+  src: url(../fonts/Kodchasan-Regular.ttf);
+  font-display: swap;
+}
+
+$font-regular: 'font-regular', Arial;
+$font-medium: 'font-medium', Arial;
+$font-bold: 'font-bold', Arial;
+
+.text-reg {
+  font-family: $font-regular;
+}
+
+.text-medium {
+  font-family: $font-medium;
+}
+
+.text-bold {
+  font-family: $font-bold;
+}
+
+* {
+  font-family: $font-regular;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.1em;
+  color: $dark;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $font-bold;
+  text-align: center;
+}
+
+h1 {
+  font-size: 28px;
+  margin-top: 32px;
+}
+h2 {
+  font-size: 22px;
+}
+h3 {
+  font-size: 18px;
+}
+
+a,
+a:visited {
+  font-family: $font-bold;
+}
+a:hover {
+  color: $secondary;
+
+  p {
+    color: $secondary;
+  }
+}
+
+.isCurrentPage {
+  cursor: default;
+  text-decoration: underline;
+
+  &:hover {
+    color: $dark;
+  }
+}
+
+.larger-text {
+  font-size: 16px;
+}
+
+.text-a-cent {
+  text-align: center;
+}

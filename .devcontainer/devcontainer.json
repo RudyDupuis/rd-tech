@@ -1,0 +1,7 @@
+{
+  "name": "RD-Tech Dev Container",
+  "dockerComposeFile": ["../docker-compose.dev.yml"],
+  "workspaceFolder": "/app",
+  "service": "app",
+  "remoteUser": "root"
+}

@@ -1,0 +1,38 @@
+.skill-size-medium {
+  width: 60px;
+  height: 60px;
+  svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+.skill-size-small {
+  width: 40px;
+  height: 40px;
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.skill-color-primary {
+  svg {
+    path {
+      fill: $primary;
+    }
+  }
+}
+.skill-color-secondary {
+  svg {
+    path {
+      fill: $secondary;
+    }
+  }
+}
+.skill-color-grey {
+  svg {
+    path {
+      fill: $grey-1;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GetSkill } from '@/entities/skills/Skill'
+import type { GetSkill } from '~/utils/entities/skills/Skill'
 import { ref, watch } from 'vue'
 
 interface Props {

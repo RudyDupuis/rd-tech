@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { GetExperience } from '@/entities/experiences/Experience'
-import { GetProjectExperience } from '@/entities/experiences/ProjectExperience'
-import { formatExperienceDate } from '~/utils/formatting'
+import type { GetExperience } from '~/utils/entities/experiences/Experience'
+import { GetProjectExperience } from '~/utils/entities/experiences/ProjectExperience'
+import { formatExperienceDate } from '~/utils/helpers/formatting'
 
 interface Props {
   experience: GetExperience

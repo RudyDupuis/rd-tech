@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { PostJobExperience, PutJobExperience } from '@/entities/experiences/JobExperience'
+import { PostJobExperience, PutJobExperience } from '~/utils/entities/experiences/JobExperience'
 import {
   PostProjectExperience,
   PutProjectExperience
-} from '@/entities/experiences/ProjectExperience'
+} from '~/utils/entities/experiences/ProjectExperience'
 import {
   PostTrainingExperience,
   PutTrainingExperience
-} from '@/entities/experiences/TrainingExperience'
-import type { GetHardSkill } from '@/entities/skills/HardSkill'
+} from '~/utils/entities/experiences/TrainingExperience'
+import type { GetHardSkill } from '~/utils/entities/skills/HardSkill'
 import { ApiMethods } from '~/utils/api/ApiMethods'
 import { SkillApi } from '~/utils/api/SkillApi'
 import { JobExperienceMapper } from '~/utils/mappers/experiences/JobExperienceMapper'
 import { ProjectExperienceMapper } from '~/utils/mappers/experiences/ProjectExperienceMapper'
 import { TrainingExperienceMapper } from '~/utils/mappers/experiences/TrainingExperienceMapper'
-import { isDefined } from '~/utils/TypeGuard'
+import { isDefined } from '~/utils/type/TypeGuard'
 import { computed, ref, watch } from 'vue'
 
 interface Props {

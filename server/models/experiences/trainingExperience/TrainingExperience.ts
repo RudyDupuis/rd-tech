@@ -1,5 +1,5 @@
 import TrainingExperienceDto from './TrainingExperienceDto'
-import { isDefined } from '../../../shared/utils/TypeGuard'
+import { isDefined } from '../../../utils/TypeGuard'
 import TrainingExperienceModel from './TrainingExperienceModel'
 
 export default class TrainingExperience {

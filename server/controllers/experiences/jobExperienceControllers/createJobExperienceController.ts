@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import { JobExperienceDto } from '../../../models/experiences/jobExperience/JobExperienceDto'
 import JobExperienceModel from '../../../models/experiences/jobExperience/JobExperienceModel'
 import JobExperience from '~/server/models/experiences/jobExperience/JobExperience'

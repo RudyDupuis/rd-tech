@@ -2,7 +2,8 @@ import {
   GetJobExperience,
   PostJobExperience,
   PutJobExperience
-} from '@/entities/experiences/JobExperience'
+} from '~/utils/entities/experiences/JobExperience'
+import { isDefined } from '~/utils/type/TypeGuard'
 
 export interface JobExperienceJson {
   id: string

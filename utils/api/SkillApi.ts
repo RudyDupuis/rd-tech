@@ -1,8 +1,8 @@
-import type { GetHardSkill } from '@/entities/skills/HardSkill'
+import type { GetHardSkill } from '~/utils/entities/skills/HardSkill'
 import { HardSkillMapper, type HardSkillJson } from '../mappers/skills/HardSkillMapper'
 import { SoftSkillMapper, type SoftSkillJson } from '../mappers/skills/SoftSkillMapper'
 import { ApiMethods } from './ApiMethods'
-import type { GetSoftSkill } from '@/entities/skills/SoftSkill'
+import type { GetSoftSkill } from '~/utils/entities/skills/SoftSkill'
 
 export class SkillApi {
   private api = new ApiMethods()

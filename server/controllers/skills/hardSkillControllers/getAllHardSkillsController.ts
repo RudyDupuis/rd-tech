@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import HardSkill from '~/server/models/skills/hardSkill/HardSkill'
 
 export default async function getAllHardSkillsController(_: Request, res: Response): Promise<void> {

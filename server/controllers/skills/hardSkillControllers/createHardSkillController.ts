@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import HardSkillDto from '../../../models/skills/hardSkill/HardSkillDto'
-import { isUndefined } from '../../../shared/utils/TypeGuard'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
 import HardSkill from '../../../models/skills/hardSkill/HardSkill'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
+import { isUndefined } from '~/utils/type/TypeGuard'
 
 export default async function createHardSkillController(
   req: Request,

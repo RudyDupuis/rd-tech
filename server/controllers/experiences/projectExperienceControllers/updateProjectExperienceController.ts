@@ -1,20 +1,21 @@
 import { Request, Response } from 'express'
 import ProjectExperienceDto from '../../../models/experiences/projectExperience/ProjectExperienceDto'
-import { isDefined, isNull } from '../../../shared/utils/TypeGuard'
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
-import DeleteImageHandler from '../../../shared/utils/controllers/DeleteImageHandler'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import DeleteImageHandler from '../../../utils/DeleteImageHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperience from '../../../models/experiences/projectExperience/ProjectExperience'
-import { isNotNull } from '~/utils/TypeGuard'
-import generateUniqueSlug from '~/server/shared/utils/controllers/GenerateUniqueSlug'
+import { isDefined, isFileObject, isNotNull, isNull } from '~/utils/type/TypeGuard'
+import generateUniqueSlug from '~/server/utils/GenerateUniqueSlug'
 
 export default async function updateProjectExperienceController(
   req: Request,
   res: Response
 ): Promise<void> {
   const { id } = req.params
-  const newThumbnailPath = req.files?.['thumbnail']?.[0]?.path
-  const newImagesPath = req.files?.['images']?.map((file) => file.path) ?? []
+  const newThumbnailPath = isFileObject(req.files) ? req.files?.['thumbnail']?.[0]?.path : undefined
+  const newImagesPath = isFileObject(req.files)
+    ? (req.files?.['images']?.map((file) => file.path) ?? [])
+    : []
 
   const newProjectExperienceDto: ProjectExperienceDto = {
     title: req.body.title,

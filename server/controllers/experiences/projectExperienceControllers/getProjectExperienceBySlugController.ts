@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperience from '~/server/models/experiences/projectExperience/ProjectExperience'
-import { isNull } from '~/server/shared/utils/TypeGuard'
+import { isNull } from '~/utils/type/TypeGuard'
 
 export default async function getProjectExperienceBySlugController(
   req: Request,

@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-import { isUndefined } from '../../../shared/utils/TypeGuard'
 import SoftSkillDto from '../../../models/skills/softSkill/SoftSkillDto'
 import SoftSkillModel from '../../../models/skills/softSkill/SoftSkillModel'
 import SoftSkill from '../../../models/skills/softSkill/SoftSkill'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
+import { isUndefined } from '~/utils/type/TypeGuard'
 
 export default async function createSoftSkillController(
   req: Request,

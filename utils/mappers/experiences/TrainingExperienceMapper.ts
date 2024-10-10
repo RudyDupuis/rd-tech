@@ -2,7 +2,8 @@ import {
   GetTrainingExperience,
   PostTrainingExperience,
   PutTrainingExperience
-} from '@/entities/experiences/TrainingExperience'
+} from '~/utils/entities/experiences/TrainingExperience'
+import { isDefined } from '~/utils/type/TypeGuard'
 
 export interface TrainingExperienceJson {
   id: string

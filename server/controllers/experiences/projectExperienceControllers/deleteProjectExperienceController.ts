@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
-import { isNotNull, isNull } from '../../../shared/utils/TypeGuard'
-import DeleteImageHandler from '../../../shared/utils/controllers/DeleteImageHandler'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import DeleteImageHandler from '../../../utils/DeleteImageHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
+import { isNotNull, isNull } from '~/utils/type/TypeGuard'
 
 export default async function deleteProjectExperienceController(
   req: Request,

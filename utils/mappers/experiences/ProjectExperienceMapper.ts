@@ -2,8 +2,9 @@ import {
   GetProjectExperience,
   PostProjectExperience,
   PutProjectExperience
-} from '@/entities/experiences/ProjectExperience'
-import { GetHardSkill } from '@/entities/skills/HardSkill'
+} from '~/utils/entities/experiences/ProjectExperience'
+import { GetHardSkill } from '~/utils/entities/skills/HardSkill'
+import { isDefined } from '~/utils/type/TypeGuard'
 
 export interface ProjectExperienceJson {
   id: string

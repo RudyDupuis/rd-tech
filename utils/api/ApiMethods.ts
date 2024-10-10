@@ -1,3 +1,5 @@
+import { isUndefined } from '../type/TypeGuard'
+
 export class ApiMethods {
   async getData(endpoint: string) {
     const url = `/api/${endpoint}`

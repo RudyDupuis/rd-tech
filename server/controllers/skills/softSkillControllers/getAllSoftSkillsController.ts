@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import SoftSkillModel from '../../../models/skills/softSkill/SoftSkillModel'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import SoftSkill from '~/server/models/skills/softSkill/SoftSkill'
 
 export default async function getAllSoftSkillsController(_: Request, res: Response): Promise<void> {

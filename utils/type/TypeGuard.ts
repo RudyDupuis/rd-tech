@@ -13,3 +13,9 @@ export function isNotNull<T>(value: T | null): value is T {
 export function isNull<T>(value: T | null): value is null {
   return value === null
 }
+
+export function isFileObject(
+  files: unknown
+): files is { [fieldname: string]: Express.Multer.File[] } {
+  return typeof files === 'object' && !Array.isArray(files)
+}

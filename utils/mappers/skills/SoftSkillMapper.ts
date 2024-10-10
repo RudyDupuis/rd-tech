@@ -1,4 +1,4 @@
-import { GetSoftSkill, PostSoftSkill, PutSoftSkill } from '@/entities/skills/SoftSkill'
+import { GetSoftSkill, PostSoftSkill, PutSoftSkill } from '~/utils/entities/skills/SoftSkill'
 
 export interface SoftSkillJson {
   id: string

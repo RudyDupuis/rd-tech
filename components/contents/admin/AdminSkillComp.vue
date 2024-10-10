@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { GetHardSkill } from '@/entities/skills/HardSkill'
-import type { GetSoftSkill } from '@/entities/skills/SoftSkill'
-import { capitalizeFirstLetter } from '~/utils/formatting'
+import { GetHardSkill } from '~/utils/entities/skills/HardSkill'
+import type { GetSoftSkill } from '~/utils/entities/skills/SoftSkill'
+import { capitalizeFirstLetter } from '~/utils/helpers/formatting'
 
 interface Props {
   skill: GetHardSkill | GetSoftSkill

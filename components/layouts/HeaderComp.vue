@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router'
-import useIsSmallScreen from '~/utils/useIsSmallScreen'
+import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
 
 const route = useRoute()
 const isSmallScreen = useIsSmallScreen()

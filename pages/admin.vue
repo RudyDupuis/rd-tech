@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { type GetJobExperience, PutJobExperience } from '@/entities/experiences/JobExperience'
+import { type GetJobExperience, PutJobExperience } from '~/utils/entities/experiences/JobExperience'
 import {
   type GetProjectExperience,
   PutProjectExperience
-} from '@/entities/experiences/ProjectExperience'
+} from '~/utils/entities/experiences/ProjectExperience'
 import {
   type GetTrainingExperience,
   PutTrainingExperience
-} from '@/entities/experiences/TrainingExperience'
-import { type GetHardSkill, PutHardSkill } from '@/entities/skills/HardSkill'
-import { PutSoftSkill, type GetSoftSkill } from '@/entities/skills/SoftSkill'
+} from '~/utils/entities/experiences/TrainingExperience'
+import { type GetHardSkill, PutHardSkill } from '~/utils/entities/skills/HardSkill'
+import { PutSoftSkill, type GetSoftSkill } from '~/utils/entities/skills/SoftSkill'
 import { ExperienceApi } from '~/utils/api/ExperienceApi'
 import { SkillApi } from '~/utils/api/SkillApi'
 import { JobExperienceMapper } from '~/utils/mappers/experiences/JobExperienceMapper'
@@ -17,7 +17,7 @@ import { ProjectExperienceMapper } from '~/utils/mappers/experiences/ProjectExpe
 import { TrainingExperienceMapper } from '~/utils/mappers/experiences/TrainingExperienceMapper'
 import { HardSkillMapper } from '~/utils/mappers/skills/HardSkillMapper'
 import { SoftSkillMapper } from '~/utils/mappers/skills/SoftSkillMapper'
-import { isNotNull } from '~/utils/TypeGuard'
+import { isNotNull } from '~/utils/type/TypeGuard'
 import { onMounted, ref } from 'vue'
 
 const softSkillMapper = new SoftSkillMapper()

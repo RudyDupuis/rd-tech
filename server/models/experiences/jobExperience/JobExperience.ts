@@ -1,4 +1,4 @@
-import { isDefined } from '../../../shared/utils/TypeGuard'
+import { isDefined } from '~/utils/type/TypeGuard'
 import { JobExperienceDto } from './JobExperienceDto'
 import JobExperienceModel from './JobExperienceModel'
 

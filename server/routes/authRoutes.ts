@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import multer from 'multer'
 import env from '../config/envConfig'
-import { isUndefined } from '../shared/utils/TypeGuard'
+import { isUndefined } from '../utils/TypeGuard'
 
 interface AuthRequestBody {
   username: string | undefined

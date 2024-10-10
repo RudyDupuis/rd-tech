@@ -2,9 +2,9 @@ import { Request, Response } from 'express'
 import TrainingExperience from '../../../models/experiences/trainingExperience/TrainingExperience'
 import TrainingExperienceDto from '../../../models/experiences/trainingExperience/TrainingExperienceDto'
 import TrainingExperienceModel from '../../../models/experiences/trainingExperience/TrainingExperienceModel'
-import { isDefined, isNotNull, isNull } from '../../../shared/utils/TypeGuard'
-import DeleteImageHandler from '../../../shared/utils/controllers/DeleteImageHandler'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import DeleteImageHandler from '../../../utils/DeleteImageHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
+import { isDefined, isNotNull, isNull } from '~/utils/type/TypeGuard'
 
 export default async function updateTrainingExperienceController(
   req: Request,

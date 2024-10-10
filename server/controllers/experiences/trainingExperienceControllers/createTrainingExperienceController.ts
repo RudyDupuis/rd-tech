@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import TrainingExperienceDto from '../../../models/experiences/trainingExperience/TrainingExperienceDto'
 import TrainingExperienceModel from '../../../models/experiences/trainingExperience/TrainingExperienceModel'
 import TrainingExperience from '../../../models/experiences/trainingExperience/TrainingExperience'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 
 export default async function createTrainingExperienceController(
   req: Request,

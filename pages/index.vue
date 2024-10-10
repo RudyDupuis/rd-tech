@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { GetProjectExperience } from '@/entities/experiences/ProjectExperience'
-import type { GetHardSkill } from '@/entities/skills/HardSkill'
-import type { GetSoftSkill } from '@/entities/skills/SoftSkill'
+import { GetProjectExperience } from '~/utils/entities/experiences/ProjectExperience'
+import type { GetHardSkill } from '~/utils/entities/skills/HardSkill'
+import type { GetSoftSkill } from '~/utils/entities/skills/SoftSkill'
 import { ExperienceApi } from '~/utils/api/ExperienceApi'
 import { SkillApi } from '~/utils/api/SkillApi'
-import useIsSmallScreen from '~/utils/useIsSmallScreen'
-import { isUndefined } from '~/utils/TypeGuard'
+import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
+import { isUndefined } from '~/utils/type/TypeGuard'
 import { computed, onMounted, ref } from 'vue'
 
 const isSmallScreen = useIsSmallScreen()

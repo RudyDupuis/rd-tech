@@ -1,4 +1,4 @@
-import { GetHardSkill, PostHardSkill, PutHardSkill } from '@/entities/skills/HardSkill'
+import { GetHardSkill, PostHardSkill, PutHardSkill } from '~/utils/entities/skills/HardSkill'
 
 export interface HardSkillJson {
   id: string

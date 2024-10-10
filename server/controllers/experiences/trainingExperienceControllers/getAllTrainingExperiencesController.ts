@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import TrainingExperienceModel from '../../../models/experiences/trainingExperience/TrainingExperienceModel'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import TrainingExperience from '~/server/models/experiences/trainingExperience/TrainingExperience'
 
 export default async function getAllTrainingExperiencesController(

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
 import ProjectExperience from '~/server/models/experiences/projectExperience/ProjectExperience'

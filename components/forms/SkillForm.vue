@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PostHardSkill, PutHardSkill } from '@/entities/skills/HardSkill'
-import { PostSoftSkill, PutSoftSkill } from '@/entities/skills/SoftSkill'
+import { PostHardSkill, PutHardSkill } from '~/utils/entities/skills/HardSkill'
+import { PostSoftSkill, PutSoftSkill } from '~/utils/entities/skills/SoftSkill'
 import { ApiMethods } from '~/utils/api/ApiMethods'
 import { HardSkillMapper } from '~/utils/mappers/skills/HardSkillMapper'
 import { SoftSkillMapper } from '~/utils/mappers/skills/SoftSkillMapper'

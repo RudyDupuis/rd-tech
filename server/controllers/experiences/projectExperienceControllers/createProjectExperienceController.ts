@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
-import { isDefined } from '../../../shared/utils/TypeGuard'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperienceDto from '../../../models/experiences/projectExperience/ProjectExperienceDto'
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
 import ProjectExperience from '../../../models/experiences/projectExperience/ProjectExperience'
-import generateUniqueSlug from '~/server/shared/utils/controllers/GenerateUniqueSlug'
+import generateUniqueSlug from '~/server/utils/GenerateUniqueSlug'
+import { isDefined, isFileObject } from '~/utils/type/TypeGuard'
 
 export default async function createProjectExperienceController(
   req: Request,
@@ -16,9 +16,11 @@ export default async function createProjectExperienceController(
     shortDesc: req.body.shortDesc,
     slug: await generateUniqueSlug(req.body.title),
     endDate: req.body.endDate,
-    thumbnailPath: req.files?.['thumbnail']?.[0]?.path,
+    thumbnailPath: isFileObject(req.files) ? req.files?.['thumbnail']?.[0]?.path : undefined,
     longDesc: req.body.longDesc,
-    imagesPath: req.files?.['images']?.map((file) => file.path) ?? [],
+    imagesPath: isFileObject(req.files)
+      ? (req.files?.['images']?.map((file) => file.path) ?? [])
+      : [],
     projectLink: req.body.projectLink,
     codeLink: req.body.codeLink,
     isFavorite: req.body.isFavorite

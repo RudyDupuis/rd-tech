@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { GetProjectExperience } from '@/entities/experiences/ProjectExperience'
+import { GetProjectExperience } from '~/utils/entities/experiences/ProjectExperience'
 import { ExperienceApi } from '@/utils/api/ExperienceApi'
-import { formatExperienceDate } from '@/utils/formatting'
-import { isDefined } from '~/utils/TypeGuard'
+import { formatExperienceDate } from '~/utils/helpers/formatting'
+import { isDefined } from '~/utils/type/TypeGuard'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 

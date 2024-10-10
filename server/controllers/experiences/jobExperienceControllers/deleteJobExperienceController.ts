@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
-import { isNotNull, isNull } from '../../../shared/utils/TypeGuard'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
-import DeleteImageHandler from '../../../shared/utils/controllers/DeleteImageHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
+import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import JobExperienceModel from '../../../models/experiences/jobExperience/JobExperienceModel'
+import { isNotNull, isNull } from '~/utils/type/TypeGuard'
 export default async function deleteJobExperienceController(
   req: Request,
   res: Response

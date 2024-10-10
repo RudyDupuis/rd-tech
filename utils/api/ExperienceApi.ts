@@ -1,10 +1,10 @@
-import type { GetProjectExperience } from '@/entities/experiences/ProjectExperience'
+import type { GetProjectExperience } from '~/utils/entities/experiences/ProjectExperience'
 import { ApiMethods } from './ApiMethods'
 import {
   ProjectExperienceMapper,
   type ProjectExperienceJson
 } from '../mappers/experiences/ProjectExperienceMapper'
-import type { GetJobExperience } from '@/entities/experiences/JobExperience'
+import type { GetJobExperience } from '~/utils/entities/experiences/JobExperience'
 import {
   JobExperienceMapper,
   type JobExperienceJson
@@ -13,7 +13,7 @@ import {
   TrainingExperienceMapper,
   type TrainingExperienceJson
 } from '../mappers/experiences/TrainingExperienceMapper'
-import type { GetTrainingExperience } from '@/entities/experiences/TrainingExperience'
+import type { GetTrainingExperience } from '~/utils/entities/experiences/TrainingExperience'
 
 export class ExperienceApi {
   private api = new ApiMethods()

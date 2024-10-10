@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
-import ErrorHandler from '../../../shared/utils/controllers/ErrorHandler'
+import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperience from '~/server/models/experiences/projectExperience/ProjectExperience'
 
 export default async function getAllFavoriteProjectExperiencesController(

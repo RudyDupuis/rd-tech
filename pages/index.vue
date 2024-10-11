@@ -197,8 +197,8 @@ fetchData()
           :key="index"
           :experience="project"
         />
-        <FetchDataComp :isloading="experienceIsLoading" :has-data="favoriteProjects.length !== 0" />
       </div>
+      <FetchDataComp :isloading="experienceIsLoading" :has-data="favoriteProjects.length !== 0" />
       <router-link :to="{ name: 'mon-parcours' }" class="button mb4">Voir mon parcours</router-link>
     </section>
   </main>

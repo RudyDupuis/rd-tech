@@ -14,28 +14,12 @@ function isHardSkill(checkingSkill: typeof skill): checkingSkill is GetHardSkill
 </script>
 
 <template>
-  <div class="f-col a-cent">
-    <p>{{ skill.id }}</p>
-    <img :src="'/api/' + skill.svgPath" :alt="'Image de ' + skill.name" />
-    <p>{{ skill.name }}</p>
-    <p v-if="isHardSkill(skill)">
+  <div class="flex flex-col items-center cursor-pointer hover:opacity-50">
+    <p class="text-xs">{{ skill.id }}</p>
+    <img :src="'/api/' + skill.svgPath" :alt="'Image de ' + skill.name" class="w-8" />
+    <p class="text-xs">{{ skill.name }}</p>
+    <p v-if="isHardSkill(skill)" class="text-xs">
       {{ capitalizeFirstLetter(skill.mastery) }}
     </p>
   </div>
 </template>
-
-<style scoped lang="scss">
-img {
-  width: 40px;
-  height: auto;
-}
-p {
-  font-size: 10px;
-}
-div {
-  cursor: pointer;
-  &:hover {
-    opacity: 0.7;
-  }
-}
-</style>

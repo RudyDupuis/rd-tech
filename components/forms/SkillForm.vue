@@ -114,12 +114,12 @@ watch(
 </script>
 
 <template>
-  <div class="f-col a-cent">
-    <h3 class="mb2">
+  <div class="flex flex-col items-center">
+    <h3 class="small-title mb-5">
       {{ (isPostSkill(editingSkill) ? 'Créer' : 'Modifier ') + ' une compétence' }}
     </h3>
 
-    <label for="type" class="text-a-cent">Type</label>
+    <label for="type">Type</label>
     <select id="type" v-if="isPostSkill(editingSkill)" v-model="selectedtype">
       <option value="softSkill">Soft Skill</option>
       <option value="hardSkill">Hard Skill</option>
@@ -131,7 +131,7 @@ watch(
       :alt="'Logo de ' + editingSkill.name"
     />
 
-    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="mb1">
+    <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
       <input v-model="editingSkill.name" type="text" placeholder="Nom *" required />
 
       <select
@@ -145,7 +145,7 @@ watch(
         <option value="beginner">Débutant</option>
       </select>
 
-      <label for="svg" class="text-a-cent">SVG - 80px par 80px *</label>
+      <label for="svg">SVG - 80px par 80px *</label>
       <input
         ref="fileInput"
         type="file"
@@ -155,40 +155,24 @@ watch(
         :required="isPostSkill(editingSkill)"
       />
 
-      <div class="list-button f a-cent">
+      <div
+        class="flex flex-col md:flex-row items-center justify-center w-full space-y-5 md:space-y-0 mb-5"
+      >
         <button
           v-if="isPutSkill(editingSkill)"
           type="button"
-          class="bg-grey-1"
+          class="button md:mr-2"
           @click="resetForm()"
         >
           Annuler
         </button>
-        <button type="submit" :class="{ ml2: isPutSkill(editingSkill) }">
+        <button type="submit" class="button">
           {{ isPostSkill(editingSkill) ? 'Créer' : 'Modifier ' }}
         </button>
       </div>
     </form>
-    <button
-      v-if="isPutSkill(editingSkill)"
-      type="button"
-      class="bg-warning mb3"
-      @dblclick="handleDelete()"
-    >
+    <button v-if="isPutSkill(editingSkill)" type="button" class="button" @dblclick="handleDelete()">
       Double cliquer pour supprimer
     </button>
   </div>
 </template>
-
-<style scoped lang="scss">
-.list-button {
-  @media (max-width: 500px) {
-    flex-direction: column;
-
-    button {
-      margin-left: 0;
-      margin-top: 16px;
-    }
-  }
-}
-</style>

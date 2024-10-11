@@ -6,7 +6,19 @@ import { ExperienceApi } from '~/utils/api/ExperienceApi'
 import { SkillApi } from '~/utils/api/SkillApi'
 import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
 import { isUndefined } from '~/utils/type/TypeGuard'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
+
+// eslint-disable-next-line
+useHead({
+  title: 'Accueil - Rudy Dupuis - Développeur Web et Web mobile',
+  meta: [
+    {
+      name: 'description',
+      content:
+        "Je suis Rudy Dupuis, un développeur Web et Web mobile passionné par l'UX. J'ai fusionné ma passion pour le bricolage et le numérique dans la conception de ce site. Découvrez mon parcours et mes compétences. Contactez-moi pour discuter de votre projet numérique."
+    }
+  ]
+})
 
 const isSmallScreen = useIsSmallScreen()
 
@@ -21,6 +33,7 @@ const favoriteProjects = ref<Array<GetProjectExperience>>([])
 const softSkills = ref<Array<GetSoftSkill>>([])
 const hardSkills = ref<Array<GetHardSkill>>([])
 const hardSkillsFilter = ref<GetHardSkill['mastery'] | undefined>(undefined)
+
 const filteredHardSkills = computed<Array<GetHardSkill>>(() => {
   if (isUndefined(hardSkillsFilter.value)) {
     return hardSkills.value
@@ -32,7 +45,7 @@ function toggleFilter(filter: GetHardSkill['mastery']) {
   hardSkillsFilter.value = hardSkillsFilter.value === filter ? undefined : filter
 }
 
-onMounted(async () => {
+async function fetchData() {
   experienceIsLoading.value = true
   softskillIsLoading.value = true
   hardskillIsLoading.value = true
@@ -57,37 +70,43 @@ onMounted(async () => {
   } finally {
     hardskillIsLoading.value = false
   }
-})
+}
+
+fetchData()
 </script>
 
 <template>
   <main>
-    <section id="hero-banner" class="f a-cent j-even">
-      <div class="f-col a-cent j-around">
-        <h1 class="mb2">Rudy Dupuis</h1>
-        <p class="larger-text mb2">Développeur Web et Web mobile</p>
+    <section id="hero-banner" class="flex min-h-screen items-center justify-evenly">
+      <div class="flex flex-col items-center justify-around space-y-10">
+        <h1 class="large-title">Rudy Dupuis</h1>
+        <p>Développeur Web et Web mobile</p>
         <ToolsboxAnimComp v-if="isSmallScreen" />
         <a href="#presentation" class="button">Découvrir mon profil</a>
       </div>
       <ToolsboxAnimComp v-if="!isSmallScreen" />
     </section>
 
-    <section id="presentation" class="f a-cent j-even ptb4">
+    <section
+      id="presentation"
+      class="flex items-center justify-evenly pb-20 md:px-20 md:space-x-10"
+    >
       <img
         v-if="!isSmallScreen"
         src="/images/rudy-picture.svg"
         alt="Une photo de rudy dupuis"
-        class="mb2"
+        class="select-none"
       />
-      <div class="f-col a-cent">
-        <h2 class="mb3">Qui suis je ?</h2>
+      <div class="flex flex-col items-center space-y-20">
+        <h2 class="medium-title">Qui suis je ?</h2>
         <img
           v-if="isSmallScreen"
           src="/images/rudy-picture.svg"
           alt="Une photo de rudy dupuis"
-          class="mb3"
+          style="width: 250px; height: 250px"
+          class="select-none"
         />
-        <p class="mb3">
+        <p class="px-10 md:px-0 max-w-screen-md">
           Passionné par le bricolage et le numérique, j&apos;ai fusionné ces deux univers dans la
           conception de ce site. Tout comme le bricolage nécessite l&apos;utilisation d&apos;outils,
           je donne vie à des concepts numériques à l&apos;aide des langages de programmation et des
@@ -103,15 +122,17 @@ onMounted(async () => {
           Contactez moi pour discuter de vos besoins en développement web. Ensemble, nous
           réaliserons votre projet numérique.
         </p>
-        <router-link :to="{ name: 'contact' }" class="button">Me contacter</router-link>
+        <router-link :to="{ name: 'me-contacter' }" class="button">Me contacter</router-link>
       </div>
     </section>
 
-    <section id="skills" class="f-col a-cent bg-grey-3 ptb3 mb4">
-      <h2 class="mb3">Mes compétences</h2>
-      <div class="prl2">
-        <h3 class="mb2">Hard skills</h3>
-        <div class="button-list w80vw f a-cent j-even mb3">
+    <section id="skills" class="flex flex-col items-center bg-grey_3 py-20 space-y-10">
+      <h2 class="medium-title">Mes compétences</h2>
+      <div class="w-full px-10 xl:px-40 space-y-10">
+        <h3 class="small-title">Hard skills</h3>
+        <div
+          class="flex flex-col items-center justify-center space-y-3 md:flex-row md:space-y-0 md:space-x-20"
+        >
           <button
             class="choice-button"
             :class="{
@@ -122,7 +143,7 @@ onMounted(async () => {
             Avancé
           </button>
           <button
-            class="choice-button ml1"
+            class="choice-button"
             :class="{
               'choice-button--active': hardSkillsFilter === 'intermediate'
             }"
@@ -131,7 +152,7 @@ onMounted(async () => {
             Intermédiaire
           </button>
           <button
-            class="choice-button ml1"
+            class="choice-button"
             :class="{
               'choice-button--active': hardSkillsFilter === 'beginner'
             }"
@@ -140,37 +161,37 @@ onMounted(async () => {
             Débutant
           </button>
         </div>
-
-        <div class="medium-skill-list mb3">
+        <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4">
           <SkillComp
             v-for="(skill, index) in filteredHardSkills"
             :key="index"
             :skill="skill"
-            :color="skill.mastery === 'advanced' ? 'primary' : 'secondary'"
+            :color="skill.mastery === 'advanced' ? 'primary' : 'grey'"
             size="medium"
           />
-          <FetchDataComp
-            :isloading="hardskillIsLoading"
-            :has-data="filteredHardSkills.length !== 0"
-          />
         </div>
-        <h3 class="mb3">Soft skills</h3>
-        <div class="medium-skill-list">
+        <FetchDataComp
+          :isloading="hardskillIsLoading"
+          :has-data="filteredHardSkills.length !== 0"
+        />
+
+        <h3 class="small-title">Soft skills</h3>
+        <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4">
           <SkillComp
             v-for="(skill, index) in softSkills"
             :key="index"
             :skill="skill"
-            color="secondary"
+            color="grey"
             size="medium"
           />
-          <FetchDataComp :isloading="softskillIsLoading" :has-data="softSkills.length !== 0" />
         </div>
+        <FetchDataComp :isloading="softskillIsLoading" :has-data="softSkills.length !== 0" />
       </div>
     </section>
 
-    <section id="favorite-projects" class="f-col a-cent">
-      <h2 class="mb3">Mes projets favoris</h2>
-      <div class="w100 f f-wrap j-even mb3">
+    <section id="favorite-projects" class="flex flex-col items-center py-20 space-y-20">
+      <h2 class="medium-title">Mes projets favoris</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-20">
         <ExperienceComp
           v-for="(project, index) in favoriteProjects"
           :key="index"
@@ -182,45 +203,3 @@ onMounted(async () => {
     </section>
   </main>
 </template>
-
-<style scoped lang="scss">
-#hero-banner {
-  height: calc(100dvh - 96px);
-}
-
-#presentation {
-  p {
-    width: 40vw;
-    text-align: justify;
-  }
-
-  @media (max-width: 1100px) {
-    img {
-      margin-top: 64px;
-      width: 273px;
-      height: 272px;
-    }
-
-    p {
-      width: 60vw;
-    }
-  }
-
-  @media (max-width: 500px) {
-    img {
-      width: 212px;
-      height: 211px;
-    }
-
-    p {
-      width: 80vw;
-    }
-  }
-}
-
-#skills {
-  h3 {
-    text-align: left;
-  }
-}
-</style>

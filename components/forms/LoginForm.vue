@@ -35,19 +35,17 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="f-col a-cent mb4">
-    <p class="larger-text text-a-cent text-error mb4">
-      Accès réservé exclusivement au personnel (moi)
-    </p>
-    <h3 class="mb2">Connexion</h3>
-    <div class="mb4">
-      <form @submit.prevent="handleSubmit" class="mb1">
+  <div class="flex flex-col items-center mb-40">
+    <p class="text-false mb-20">Accès réservé exclusivement au personnel (moi)</p>
+    <h3 class="medium-title mb-10">Connexion</h3>
+    <div>
+      <form @submit.prevent="handleSubmit">
         <input v-model="loginInfo.username" type="text" placeholder="Username" required />
         <input v-model="loginInfo.password" type="text" placeholder="Password" required />
 
-        <button type="submit">Se connecter</button>
+        <button type="submit" class="button mt-10">Se connecter</button>
       </form>
-      <p class="text-error text-a-cent">{{ errorMessage }}</p>
+      <p class="text-false text-center">{{ errorMessage }}</p>
     </div>
   </div>
 </template>

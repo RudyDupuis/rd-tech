@@ -1,108 +1,23 @@
-.svg-link {
+.button {
+  @apply cursor-pointer inline-block text-center py-4 w-10/12 md:w-auto px-0 md:px-16 bg-primary text-xs rounded-lg text-light tracking-wider font-primary_bold uppercase;
+
   &:hover {
-    path {
-      fill: $secondary;
-    }
+    @apply bg-secondary text-light;
   }
 }
 
-.button,
-button {
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  padding: 16px 64px;
-  background: $primary;
-  border-radius: 10px;
-  color: $light;
-  font-family: $font-bold;
-  text-transform: uppercase;
-  font-size: 12px;
-
-  @media (max-width: 500px) {
-    width: 80vw;
-    padding: 16px 0;
-  }
-
-  &:hover {
-    background-color: $secondary;
-    color: $light;
-  }
-}
-
-/** to use with <button> **/
 .choice-button {
-  padding: 10px 0;
-  width: 230px;
-  background: $grey-1;
-  text-transform: none;
-  font-family: $font-regular;
+  @apply bg-grey_1 text-light inline-block text-center py-2 w-9/12 md:w-60 text-sm rounded-lg;
 
   &:hover {
-    background: $grey-2;
-    color: $light;
+    @apply bg-grey_2;
   }
 
   &--active {
-    background: $primary;
+    @apply bg-primary;
 
     &:hover {
-      background: $light-primary;
-    }
-  }
-}
-
-.carousel-btn {
-  font-size: 40px;
-  padding: 15px;
-  cursor: pointer;
-  color: $primary;
-  user-select: none;
-
-  &:hover {
-    color: $secondary;
-  }
-
-  &--disabled {
-    color: $grey-2;
-
-    &:hover {
-      color: $grey-2;
-    }
-  }
-}
-
-/** to use with <button> **/
-.scroll-to-top-button {
-  padding: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 200px;
-  font-size: 25px;
-  position: fixed;
-  z-index: 5;
-  bottom: 10%;
-  right: 5%;
-
-  @media (max-width: 550px) {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-  }
-}
-
-.button-list {
-  @media (max-width: 800px) {
-    flex-direction: column;
-    button {
-      margin-left: 0;
-      margin-bottom: 16px;
-      width: 300px;
-    }
-  }
-  @media (max-width: 400px) {
-    button {
-      width: 80vw;
+      @apply bg-light_primary;
     }
   }
 }

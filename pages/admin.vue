@@ -71,46 +71,45 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1 class="mb3">Administration</h1>
+  <h1 class="large-title mt-40 mb-20">Administration</h1>
   <LoginForm v-if="!hasToken" :add-token="addToken" />
   <template v-else>
-    <section class="f-col a-cent">
-      <button @click="removeToken()" class="mb3">Supprimer le token</button>
-      <h2 class="mb2">Gestion des compétence</h2>
-      <SkillForm :skill="editingSkill" :getSkills="getSkills" class="mb3" />
-      <h3 class="mb1">Soft Skill</h3>
-      <p class="mb2 prl2 text-a-cent">Cliquer sur un élément des listes pour le modifier</p>
-      <div class="medium-skill-list w80vw mb3">
+    <section class="flex flex-col items-center">
+      <button @click="removeToken()" class="button mb-16">Supprimer le token</button>
+      <h2 class="medium-title mb-16">Gestion des compétence</h2>
+      <SkillForm :skill="editingSkill" :getSkills="getSkills" class="mb-10" />
+      <h3 class="small-title">Soft Skill</h3>
+      <p class="text-center">Cliquer sur un élément des listes pour le modifier</p>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4">
         <AdminSkillComp
           v-for="(skill, index) in softSkills"
           :key="index"
           :skill="skill"
-          class="mb1"
           @click="editingSkill = softSkillMapper.getSoftSkillToPutSoftSkill(skill)"
         />
       </div>
 
-      <h3 class="mb1">Hard Skill</h3>
-      <p class="mb2 prl2 text-a-cent">Cliquer sur un élément des listes pour le modifier</p>
-      <div class="medium-skill-list w80vw mb3">
+      <h3 class="small-title">Hard Skill</h3>
+      <p class="text-center">Cliquer sur un élément des listes pour le modifier</p>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4">
         <AdminSkillComp
           v-for="(skill, index) in hardSkills"
           :key="index"
           :skill="skill"
-          class="mb1"
           @click="editingSkill = hardSkillMapper.getHardSkillToPutHardSkill(skill)"
         />
       </div>
     </section>
-    <section class="f-col a-cent">
-      <h2 class="mb2">Gestion des expériences</h2>
+
+    <section class="flex flex-col items-center">
+      <h2 class="medium-title py-16">Gestion des expériences</h2>
       <ExperienceForm
         :experience="editingExperience"
         :getExperiences="getExperiences"
-        class="mb3"
+        class="mb-10"
       />
-      <h3 class="mb1">Projets</h3>
-      <div class="medium-skill-list w80vw mb3">
+      <h3 class="small-title mb-1">Projets</h3>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4 mb-10">
         <AdminExperienceComp
           v-for="(project, index) in projectExperiences"
           :key="index"
@@ -121,8 +120,8 @@ onMounted(() => {
           "
         />
       </div>
-      <h3 class="mb1">Emplois</h3>
-      <div class="medium-skill-list w80vw mb3">
+      <h3 class="small-title mb-1">Emplois</h3>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4 mb-10">
         <AdminExperienceComp
           v-for="(job, index) in jobExperiences"
           :key="index"
@@ -131,8 +130,8 @@ onMounted(() => {
           @click="editingExperience = jobMapper.getJobExperienceToPutJobExperience(job)"
         />
       </div>
-      <h3 class="mb1">Formations</h3>
-      <div class="medium-skill-list w80vw mb3">
+      <h3 class="small-title mb-1">Formations</h3>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 gap-4 mb-10">
         <AdminExperienceComp
           v-for="(training, index) in trainingExperiences"
           :key="index"

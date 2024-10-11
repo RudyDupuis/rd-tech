@@ -7,24 +7,28 @@ const isSmallScreen = useIsSmallScreen()
 </script>
 
 <template>
-  <header class="f a-cent j-betw prl4">
-    <router-link to="/"><LogoSvg /></router-link>
+  <header
+    class="flex items-center justify-between px-10 md:px-20 py-5 fixed top-0 left-0 w-screen bg-light z-50"
+  >
+    <router-link to="/">
+      <LogoSvg class="fill-primary hover:fill-secondary" />
+    </router-link>
     <nav>
-      <ul class="f">
+      <ul class="flex space-x-5">
         <li>
           <router-link
             :to="{ name: 'mon-parcours' }"
-            class="text-medium"
-            :class="{ isCurrentPage: route.path === '/mon-parcours' }"
+            class="font-primary_medium"
+            :class="{ 'is-current-page': route.path === '/mon-parcours' }"
           >
             {{ isSmallScreen ? 'Parcours' : 'Mon parcours' }}
           </router-link>
         </li>
-        <li class="ml2">
+        <li>
           <router-link
-            :to="{ name: 'contact' }"
-            class="text-medium"
-            :class="{ isCurrentPage: route.path === '/me-contacter' }"
+            :to="{ name: 'me-contacter' }"
+            class="font-primary_medium"
+            :class="{ 'is-current-page': route.path === '/me-contacter' }"
           >
             {{ isSmallScreen ? 'Contact' : 'Me contacter' }}
           </router-link>
@@ -33,24 +37,3 @@ const isSmallScreen = useIsSmallScreen()
     </nav>
   </header>
 </template>
-
-<style scoped lang="scss">
-header {
-  height: 96px;
-
-  @media (max-width: 850px) {
-    padding-right: 64px;
-    padding-left: 64px;
-  }
-
-  @media (max-width: 380px) {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-
-  @media (max-width: 330px) {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-}
-</style>

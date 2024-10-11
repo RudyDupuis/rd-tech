@@ -2,4 +2,5 @@
   <HeaderComp />
   <NuxtPage />
   <FooterComp />
+  <CookieRequester />
 </template>

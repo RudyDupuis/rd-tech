@@ -6,7 +6,19 @@ import { GetTrainingExperience } from '~/utils/entities/experiences/TrainingExpe
 import { GetHardSkill } from '~/utils/entities/skills/HardSkill'
 import { ExperienceApi } from '~/utils/api/ExperienceApi'
 import { SkillApi } from '~/utils/api/SkillApi'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, ref } from 'vue'
+
+// eslint-disable-next-line
+useHead({
+  title: 'Mon parcours - Rudy Dupuis - Développeur Web et Web mobile',
+  meta: [
+    {
+      name: 'description',
+      content:
+        "Découvrez mon parcours (Rudy Dupuis), développeur Web et Web mobile passionné. Explorez mes formations, mes expériences professionnelles et les projets que j'ai réalisés."
+    }
+  ]
+})
 
 const skillApi = new SkillApi()
 const skillIsLoading = ref<boolean>(false)
@@ -61,16 +73,7 @@ function toggleProjectFilterBySkill(filter: GetHardSkill['id']) {
   }
 }
 
-const showScrollToTopButton = ref<boolean>(false)
-function handleScrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
-function handleShowScrollToTopButton() {
-  showScrollToTopButton.value = window.scrollY > window.innerHeight * 0.5 ? true : false
-}
-
-onMounted(async () => {
+async function fetchDate() {
   skillIsLoading.value = true
   experienceIsLoading.value = true
   try {
@@ -94,27 +97,25 @@ onMounted(async () => {
   } finally {
     experienceIsLoading.value = false
   }
+}
 
-  window.addEventListener('scroll', handleShowScrollToTopButton)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleShowScrollToTopButton)
-})
+fetchDate()
 </script>
 
 <template>
   <main>
-    <h1 class="mb3">Mon parcours</h1>
+    <h1 class="large-title mt-40 mb-16">Mon parcours</h1>
 
-    <a href="#parcours" class="f-col a-cent">
-      <p>Faites défiler pour voir mon parcours</p>
-      <p class="information-arrow">↓</p>
+    <a href="#parcours" class="flex flex-col items-center mb-5">
+      <p class="font-primary_regular text-sm text-center">Faites défiler pour voir mon parcours</p>
+      <p class="information-arrow text-4xl">↓</p>
     </a>
 
-    <section class="f-col a-cent bg-grey-3 ptb2">
-      <h2 class="mb2">Trier</h2>
-      <div class="button-list w80vw f a-cent j-even mb2">
+    <section class="flex flex-col items-center bg-grey_3 py-10 space-y-10">
+      <h2 class="medium-title">Trier</h2>
+      <div
+        class="flex flex-col items-center justify-center space-y-3 lg:flex-row lg:space-y-0 lg:space-x-20 w-full"
+      >
         <button
           class="choice-button"
           :class="{
@@ -143,8 +144,10 @@ onUnmounted(() => {
           Formations uniquement
         </button>
       </div>
-      <h2 class="mb2">Projet utilisant</h2>
-      <div class="small-skill-list w80vw">
+      <h2 class="medium-title">Projet utilisant</h2>
+      <div
+        class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-10 xl:grid-cols-12 gap-4"
+      >
         <SkillComp
           v-for="(skill, index) in hardSkills"
           :key="index"
@@ -152,21 +155,18 @@ onUnmounted(() => {
           :color="projectsFilter.includes(skill.id) ? 'primary' : 'grey'"
           size="small"
           @click="toggleProjectFilterBySkill(skill.id)"
+          class="cursor-pointer hover:opacity-50"
         />
-        <FetchDataComp :isloading="skillIsLoading" :has-data="hardSkills.length !== 0" />
       </div>
+      <FetchDataComp :isloading="skillIsLoading" :has-data="hardSkills.length !== 0" />
     </section>
 
-    <button
-      v-show="showScrollToTopButton"
-      class="scroll-to-top-button"
-      @click="handleScrollToTop()"
-    >
-      ↑
-    </button>
-
-    <section id="parcours" class="f-col a-cent ptb3 mb4">
-      <div v-for="(experience, index) in filteredExperiences" :key="index" class="f-col a-cent">
+    <section id="parcours" class="flex flex-col items-center py-20">
+      <div
+        v-for="(experience, index) in filteredExperiences"
+        :key="index"
+        class="flex flex-col items-center space-y-10"
+      >
         <template
           v-if="
             index === 0 ||
@@ -174,13 +174,13 @@ onUnmounted(() => {
               filteredExperiences[index - 1].startDate.getFullYear()
           "
         >
-          <div v-if="index !== 0" class="decorative-line bg-primary mb2"></div>
-          <h3 class="mb2">
+          <div v-if="index !== 0" class="bg-primary w-5 h-20 rounded-xl"></div>
+          <h3 class="small-title">
             {{ experience.startDate.getFullYear() }}
           </h3>
         </template>
-        <div class="decorative-line bg-primary mb2"></div>
-        <ExperienceComp :experience="experience" class="mb2" />
+        <div class="bg-primary w-2 h-10 rounded-xl mt-10"></div>
+        <ExperienceComp :experience="experience" />
       </div>
       <p v-if="filteredExperiences.length === 0 && experiences.length > 0">Aucun résultat ...</p>
       <FetchDataComp :isloading="experienceIsLoading" :has-data="experiences.length !== 0" />
@@ -189,14 +189,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-.decorative-line {
-  height: 50px;
-  width: 5px;
-  border-radius: 10px;
-}
-
 .information-arrow {
-  font-size: 35px;
   animation: moving 3s ease-in-out infinite;
 
   @keyframes moving {
@@ -220,16 +213,6 @@ onUnmounted(() => {
     }
     100% {
       transform: translateY(0);
-    }
-  }
-}
-
-.small-skill-list {
-  div {
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.6;
     }
   }
 }

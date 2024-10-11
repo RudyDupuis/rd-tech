@@ -10,30 +10,14 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="f-col a-cent">
-    <p>{{ experience.id }}</p>
+  <div class="flex flex-col items-center cursor-pointer hover:opacity-50">
+    <p class="text-xs">{{ experience.id }}</p>
     <img
       v-if="experience.thumbnailPath"
       :src="'/api/' + experience.thumbnailPath"
       :alt="'Image de ' + experience.title"
+      class="w-20"
     />
-    <p>{{ experience.title }}</p>
+    <p class="text-xs">{{ experience.title }}</p>
   </div>
 </template>
-
-<style scoped lang="scss">
-img {
-  width: 80px;
-  height: auto;
-}
-p {
-  font-size: 10px;
-  text-align: center;
-}
-div {
-  cursor: pointer;
-  &:hover {
-    opacity: 0.7;
-  }
-}
-</style>

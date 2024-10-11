@@ -222,12 +222,12 @@ hardSkills.value = await skillApi.getAllHardSkills()
 </script>
 
 <template>
-  <div class="f-col a-cent">
-    <h3 class="mb2">
+  <div class="flex flex-col items-center">
+    <h3 class="small-title mb-10">
       {{ (isPostExperience(editingExperience) ? 'Créer' : 'Modifier ') + ' une expérience' }}
     </h3>
 
-    <label v-if="isPostExperience(editingExperience)" for="type" class="text-a-cent">Type</label>
+    <label v-if="isPostExperience(editingExperience)" for="type">Type</label>
     <select id="type" v-if="isPostExperience(editingExperience)" v-model="selectedtype">
       <option value="projectExperience">Projets</option>
       <option value="jobExperience">Emplois</option>
@@ -236,24 +236,24 @@ hardSkills.value = await skillApi.getAllHardSkills()
 
     <div
       v-if="isPutExperience(editingExperience) && isDefined(editingExperience.thumbnailPath)"
-      class="remove-img mb1"
+      class="flex flex-col items-center mb-2"
       @dblclick="handleRemoveImage(editingExperience.thumbnailPath)"
     >
-      <p class="text-a-cent larger-text">Miniature</p>
+      <p>Miniature</p>
       <img
         :src="'/api/' + thumbnailUrl"
         :alt="'Miniature de ' + editingExperience.title"
         style="width: 300px; height: auto"
-        class="mb1"
+        class="mb-1"
       />
-      <p class="text-error text-a-cent">Double cliquer pour supprimer l'image</p>
+      <p class="text-false">Double cliquer pour supprimer l'image</p>
     </div>
 
     <div
       v-if="isPutExperience(editingExperience) && isDefined(editingExperience.imagesPath)"
-      class="remove-img mb1"
+      class="flex flex-col items-center mb-2"
     >
-      <p class="text-a-cent larger-text">Images</p>
+      <p>Images</p>
       <div
         v-for="(url, index) in editingExperience.imagesPath"
         :key="index"
@@ -263,24 +263,24 @@ hardSkills.value = await skillApi.getAllHardSkills()
           :src="'/api/' + url"
           :alt="'Image de ' + editingExperience.title"
           style="width: 300px; height: auto"
-          class="mb1"
+          class="mb-1"
         />
-        <p class="text-error text-a-cent">Double cliquer pour supprimer l'image</p>
+        <p class="text-false mb-3">Double cliquer pour supprimer l'image</p>
       </div>
     </div>
 
-    <form @submit.prevent="handleSubmit" enctype="multipart/form-data" class="mb1">
+    <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
       <input v-model="editingExperience.title" type="text" placeholder="Titre *" required />
-      <label for="startDate" class="text-a-cent">Date de début *</label>
+      <label for="startDate">Date de début *</label>
       <input id="startDate" v-model="computedStartDateGetStringSetDate" type="date" required />
-      <label for="endDate" class="text-a-cent">Date de fin</label>
+      <label for="endDate">Date de fin</label>
       <input id="endDate" v-model="computedEndDateGetStringSetDate" type="date" />
       <textarea
         v-model="editingExperience.shortDesc"
         placeholder="Description courte *"
         required
       ></textarea>
-      <label for="thumbnail" class="text-a-cent">Miniature | PNG - 1000px par 500px</label>
+      <label for="thumbnail">Miniature | PNG - 1000px par 500px</label>
       <input
         ref="thumbnailInput"
         type="file"
@@ -295,7 +295,7 @@ hardSkills.value = await skillApi.getAllHardSkills()
         rows="5"
         required
       ></textarea>
-      <label v-if="isProjectExperience(editingExperience)" for="hardskills" class="text-a-cent">
+      <label v-if="isProjectExperience(editingExperience)" for="hardskills">
         Hard skills liés *
       </label>
       <select
@@ -309,7 +309,7 @@ hardSkills.value = await skillApi.getAllHardSkills()
           {{ hardskill.name }}
         </option>
       </select>
-      <label v-if="isProjectExperience(editingExperience)" for="images" class="text-a-cent"
+      <label v-if="isProjectExperience(editingExperience)" for="images"
         >Images | PNG - 1000px par 500px</label
       >
       <input
@@ -335,19 +335,21 @@ hardSkills.value = await skillApi.getAllHardSkills()
       />
       <div v-if="isProjectExperience(editingExperience)" class="f a-cent j-betw mb2">
         <input v-model="editingExperience.isFavorite" id="favorite" type="checkbox" />
-        <label for="favorite" class="text-a-cent ml2">Ajouter aux favories</label>
+        <label for="favorite" class="ml-2">Ajouter aux favories</label>
       </div>
 
-      <div class="list-button f a-cent">
+      <div
+        class="flex flex-col md:flex-row items-center justify-center w-full space-y-5 md:space-y-0 mb-5"
+      >
         <button
           v-if="isPutExperience(editingExperience)"
           type="button"
-          class="bg-grey-1"
+          class="button md:mr-2"
           @click="resetForm()"
         >
           Annuler
         </button>
-        <button type="submit" :class="{ ml2: isPutExperience(editingExperience) }">
+        <button type="submit" class="button">
           {{ isPostExperience(editingExperience) ? 'Créer' : 'Modifier ' }}
         </button>
       </div>
@@ -355,27 +357,10 @@ hardSkills.value = await skillApi.getAllHardSkills()
     <button
       v-if="isPutExperience(editingExperience)"
       type="button"
-      class="bg-warning mb3"
+      class="button"
       @dblclick="handleDelete()"
     >
       Double cliquer pour supprimer
     </button>
   </div>
 </template>
-
-<style scoped lang="scss">
-.list-button {
-  @media (max-width: 500px) {
-    flex-direction: column;
-
-    button {
-      margin-left: 0;
-      margin-top: 16px;
-    }
-  }
-}
-
-.remove-img {
-  cursor: pointer;
-}
-</style>

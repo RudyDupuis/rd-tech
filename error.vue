@@ -8,11 +8,13 @@ defineProps<{
 
 <template>
   <HeaderComp />
-  <main class="f-col a-cent j-cent">
-    <h1 class="mb3">{{ error.statusCode }} - Page introuvable</h1>
-    <p class="larger-text text-a-cent mb1 prl2">Désolé cette page n'existe pas ...</p>
-    <RouterLink :to="{ name: 'home' }" class="button mb2">Revenir à l'acceuil ?</RouterLink>
-    <ToolsboxFullSvg class="mb4" />
+  <main class="flex flex-col items-center justify-center space-y-20">
+    <div class="flex flex-col items-center justify-center space-y-5">
+      <h1 class="large-title">{{ error.statusCode }} - Page introuvable</h1>
+      <p>Désolé cette page n'existe pas ...</p>
+    </div>
+    <RouterLink to="/" class="button">Revenir à l'acceuil ?</RouterLink>
+    <ToolsboxFullSvg />
   </main>
   <FooterComp />
 </template>

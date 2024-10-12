@@ -5,7 +5,7 @@ import type { GetSoftSkill } from '~/utils/entities/skills/SoftSkill'
 import { ExperienceApi } from '~/utils/api/ExperienceApi'
 import { SkillApi } from '~/utils/api/SkillApi'
 import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
-import { isUndefined } from '~/utils/type/TypeGuard'
+import { isUndefined, isDefined } from '~/utils/type/TypeGuard'
 import { computed, ref } from 'vue'
 
 // eslint-disable-next-line
@@ -23,11 +23,11 @@ useHead({
 const isSmallScreen = useIsSmallScreen()
 
 const skillApi = new SkillApi()
-const softskillIsLoading = ref<boolean>(false)
-const hardskillIsLoading = ref<boolean>(false)
+const softskillIsLoading = ref(false)
+const hardskillIsLoading = ref(false)
 
 const experienceApi = new ExperienceApi()
-const experienceIsLoading = ref<boolean>(false)
+const experienceIsLoading = ref(false)
 const favoriteProjects = ref<Array<GetProjectExperience>>([])
 
 const softSkills = ref<Array<GetSoftSkill>>([])
@@ -78,18 +78,25 @@ fetchData()
 <template>
   <main>
     <section id="hero-banner" class="flex min-h-screen items-center justify-evenly">
-      <div class="flex flex-col items-center justify-around space-y-10">
-        <h1 class="large-title">Rudy Dupuis</h1>
-        <p>Développeur Web et Web mobile</p>
-        <ToolsboxAnimComp v-if="isSmallScreen" />
-        <a href="#presentation" class="button">Découvrir mon profil</a>
-      </div>
-      <ToolsboxAnimComp v-if="!isSmallScreen" />
+      <template v-if="isDefined(isSmallScreen)">
+        <div class="flex flex-col items-center justify-around space-y-10">
+          <h1 class="large-title">Rudy Dupuis</h1>
+          <p>Développeur Web et Web mobile</p>
+          <ToolsboxAnimComp v-if="isSmallScreen" />
+          <a href="#presentation" class="button">Découvrir mon profil</a>
+        </div>
+        <ToolsboxAnimComp v-if="!isSmallScreen" />
+      </template>
+      <div
+        v-else
+        class="loader border-4 border-t-4 border-t-light border-primary rounded-full w-10 h-10 mx-auto animate-spin"
+      ></div>
     </section>
 
     <section
       id="presentation"
       class="flex items-center justify-evenly pb-20 md:px-20 md:space-x-10"
+      v-if="isDefined(isSmallScreen)"
     >
       <img
         v-if="!isSmallScreen"

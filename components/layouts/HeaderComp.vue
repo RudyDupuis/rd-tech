@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router'
 import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
+import { isDefined } from '~/utils/type/TypeGuard'
 
 const route = useRoute()
 const isSmallScreen = useIsSmallScreen()
@@ -14,7 +15,7 @@ const isSmallScreen = useIsSmallScreen()
       <LogoSvg class="fill-primary hover:fill-secondary" />
     </router-link>
     <nav>
-      <ul class="flex space-x-5">
+      <ul v-if="isDefined(isSmallScreen)" class="flex space-x-5">
         <li>
           <router-link
             :to="{ name: 'mon-parcours' }"

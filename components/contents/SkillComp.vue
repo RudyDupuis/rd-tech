@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { GetSkill } from '~/utils/entities/skills/Skill'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 interface Props {
   skill: GetSkill
@@ -16,6 +16,13 @@ function fetchSvg() {
     .then((response) => response.text())
     .then((text) => (svgContent.value = text))
 }
+
+watch(
+  () => props.skill,
+  () => {
+    fetchSvg()
+  }
+)
 
 fetchSvg()
 </script>

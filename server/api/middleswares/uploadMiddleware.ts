@@ -1,5 +1,6 @@
 import multer, { StorageEngine } from 'multer'
 import { Request } from 'express'
+import { randomUUID } from 'crypto'
 
 const skillStorage: StorageEngine = multer.diskStorage({
   destination: (_: Request, file, cb) => {
@@ -7,7 +8,7 @@ const skillStorage: StorageEngine = multer.diskStorage({
   },
   filename: (_: Request, file, cb) => {
     const ext = file.originalname.split('.').pop()
-    cb(null, `${Date.now()}.${ext}`)
+    cb(null, `${randomUUID()}.${ext}`)
   }
 })
 
@@ -17,7 +18,7 @@ const experienceStorage: StorageEngine = multer.diskStorage({
   },
   filename: (_: Request, file, cb) => {
     const ext = file.originalname.split('.').pop()
-    cb(null, `${Date.now()}.${ext}`)
+    cb(null, `${randomUUID()}.${ext}`)
   }
 })
 

@@ -94,9 +94,11 @@ fetchData()
     <section
       class="bg-grey_3 flex flex-col xl:flex-row items-center justify-evenly py-20 w-full px-10 space-y-20 xl:space-y-0"
     >
-      <pre class="max-w-screen-sm whitespace-pre-wrap">{{ project.longDesc }}</pre>
+      <pre class="max-w-screen-sm whitespace-pre-wrap font-primary_regular">{{
+        project.longDesc
+      }}</pre>
       <div>
-        <h3 class="small-title">Technologie utilisées :</h3>
+        <h3 class="small-title mb-5">Technologie utilisées :</h3>
         <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
           <SkillComp
             v-for="hardSkill in project.hardSkills"

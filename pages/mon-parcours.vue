@@ -174,7 +174,7 @@ fetchDate()
               filteredExperiences[index - 1].startDate.getFullYear()
           "
         >
-          <div v-if="index !== 0" class="bg-primary w-5 h-20 rounded-xl"></div>
+          <div v-if="index !== 0" class="bg-primary w-2 h-10 rounded-xl mt-10"></div>
           <h3 class="small-title">
             {{ experience.startDate.getFullYear() }}
           </h3>

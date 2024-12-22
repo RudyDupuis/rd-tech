@@ -14,7 +14,7 @@ router.get('/', async (_, res) => {
 
     const backupFilePath = path.join(backupDir, `${backupName}.sql`)
 
-    const postgresCommand = `PGPASSWORD=${process.env.DB_PASSWORD} pg_dump -h ${process.env.DB_HOST} -U ${process.env.DB_USER} -d ${process.env.DB_NAME} -f ${backupFilePath}`
+    const postgresCommand = `PGPASSWORD=${process.env.DB_PASS} pg_dump -h ${process.env.DB_HOST} -U ${process.env.DB_USER} -d ${process.env.DB_NAME} -f ${backupFilePath}`
     await promisify(exec)(postgresCommand)
 
     const zipFilePath = path.join(backupDir, `${backupName}.zip`)

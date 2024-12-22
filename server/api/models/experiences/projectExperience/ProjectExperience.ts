@@ -1,7 +1,7 @@
 import ProjectExperienceDto from './ProjectExperienceDto'
 import ProjectExperienceModel from './ProjectExperienceModel'
 import HardSkill from '../../skills/hardSkill/HardSkill'
-import { isDefined } from '~/utils/type/TypeGuard'
+import { isDefined } from '~/utils/types/TypeGuard'
 
 export default class ProjectExperience {
   constructor(

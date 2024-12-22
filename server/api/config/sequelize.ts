@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import { isUndefined } from '~/utils/type/TypeGuard'
+import { isUndefined } from '~/utils/types/TypeGuard'
 
 if (
   isUndefined(process.env.DB_NAME) ||

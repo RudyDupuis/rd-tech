@@ -5,7 +5,7 @@ import type { GetSoftSkill } from '~/utils/entities/skills/SoftSkill'
 import { ExperienceApi } from '~/utils/api/ExperienceApi'
 import { SkillApi } from '~/utils/api/SkillApi'
 import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
-import { isUndefined, isDefined } from '~/utils/type/TypeGuard'
+import { isUndefined, isDefined } from '~/utils/types/TypeGuard'
 import { computed, ref } from 'vue'
 
 // eslint-disable-next-line

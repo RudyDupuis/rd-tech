@@ -4,7 +4,7 @@ import TrainingExperienceDto from '../../../models/experiences/trainingExperienc
 import TrainingExperienceModel from '../../../models/experiences/trainingExperience/TrainingExperienceModel'
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isDefined, isNotNull, isNull } from '~/utils/type/TypeGuard'
+import { isDefined, isNotNull, isNull } from '~/utils/types/TypeGuard'
 
 export default async function updateTrainingExperienceController(
   req: Request,

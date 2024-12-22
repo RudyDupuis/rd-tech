@@ -1,6 +1,6 @@
 import { Response } from 'express'
 import fs from 'fs'
-import { isNotNull } from '~/utils/type/TypeGuard'
+import { isNotNull } from '~/utils/types/TypeGuard'
 
 export default function DeleteImageHandler(imagePath: string, res: Response) {
   fs.unlink(imagePath, (err) => {

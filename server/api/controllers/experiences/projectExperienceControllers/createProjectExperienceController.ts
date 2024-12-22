@@ -4,7 +4,7 @@ import ProjectExperienceDto from '../../../models/experiences/projectExperience/
 import ProjectExperienceModel from '../../../models/experiences/projectExperience/ProjectExperienceModel'
 import ProjectExperience from '../../../models/experiences/projectExperience/ProjectExperience'
 import generateUniqueSlug from '~/server/api/utils/GenerateUniqueSlug'
-import { isDefined, isMulterFileObject } from '~/utils/type/TypeGuard'
+import { isDefined, isMulterFileObject } from '~/utils/types/TypeGuard'
 
 export default async function createProjectExperienceController(
   req: Request,

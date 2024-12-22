@@ -1,10 +1,33 @@
-import { isUndefined } from '../type/TypeGuard'
+import { isNotNull, isUndefined } from '../types/TypeGuard'
 
 export class ApiMethods {
+  private headers: Headers | undefined
+
+  private async handleResponse(response: Response) {
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(response.statusText)
+    }
+    return response.json()
+  }
+
+  constructor() {
+    if (!import.meta.client) {
+      return
+    }
+    const authToken = localStorage.getItem('authToken')
+    this.headers = isNotNull(authToken)
+      ? new Headers({ Authorization: `Bearer ${authToken}` })
+      : undefined
+  }
+
   async getData(endpoint: string) {
     const url = `/api/${endpoint}`
-    const response = await fetch(url)
-    return response.json()
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: this.headers
+    })
+
+    return this.handleResponse(response)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,14 +50,13 @@ export class ApiMethods {
       }
     }
 
-    const headers = new Headers()
-    headers.append('Authorization', `Bearer ${localStorage.getItem('authToken')}`)
     const response = await fetch(url, {
       method: 'POST',
       body: formData,
-      headers
+      headers: this.headers
     })
-    return response.json()
+
+    return this.handleResponse(response)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,24 +79,25 @@ export class ApiMethods {
       }
     }
 
-    const headers = new Headers()
-    headers.append('Authorization', `Bearer ${localStorage.getItem('authToken')}`)
     const response = await fetch(url, {
       method: 'PUT',
       body: formData,
-      headers
+      headers: this.headers
     })
-    return response.json()
+
+    return this.handleResponse(response)
   }
 
   async deleteData(endpoint: string) {
     const url = `/api/${endpoint}`
 
-    const headers = new Headers()
-    headers.append('Authorization', `Bearer ${localStorage.getItem('authToken')}`)
-    await fetch(url, {
+    const response = await fetch(url, {
       method: 'DELETE',
-      headers
+      headers: this.headers
     })
+
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(response.statusText)
+    }
   }
 }

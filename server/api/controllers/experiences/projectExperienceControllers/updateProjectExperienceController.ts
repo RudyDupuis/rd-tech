@@ -4,7 +4,7 @@ import ProjectExperienceModel from '../../../models/experiences/projectExperienc
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperience from '../../../models/experiences/projectExperience/ProjectExperience'
-import { isDefined, isMulterFileObject, isNotNull, isNull } from '~/utils/type/TypeGuard'
+import { isDefined, isMulterFileObject, isNotNull, isNull } from '~/utils/types/TypeGuard'
 import generateUniqueSlug from '~/server/api/utils/GenerateUniqueSlug'
 
 export default async function updateProjectExperienceController(

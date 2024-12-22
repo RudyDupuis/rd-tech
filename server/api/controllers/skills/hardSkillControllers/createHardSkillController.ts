@@ -3,7 +3,7 @@ import HardSkillDto from '../../../models/skills/hardSkill/HardSkillDto'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
 import HardSkill from '../../../models/skills/hardSkill/HardSkill'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isUndefined } from '~/utils/type/TypeGuard'
+import { isUndefined } from '~/utils/types/TypeGuard'
 
 export default async function createHardSkillController(
   req: Request,

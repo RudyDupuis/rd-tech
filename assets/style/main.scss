@@ -1,3 +1,4 @@
+@use "sass:meta";
 @font-face {
   font-family: 'Kodchasan-Regular';
   src: url(../fonts/Kodchasan-Regular.ttf);
@@ -18,7 +19,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './setting';
-@import './text';
-@import './button';
-@import './form';
+@include meta.load-css('setting');
+@include meta.load-css('text');
+@include meta.load-css('button');
+@include meta.load-css('form');

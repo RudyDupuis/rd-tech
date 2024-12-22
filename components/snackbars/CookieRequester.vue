@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { isNotNull } from '~/utils/type/TypeGuard'
+import { isNotNull } from '~/utils/types/TypeGuard'
 
 // eslint-disable-next-line
 const { initialize } = useGtag()

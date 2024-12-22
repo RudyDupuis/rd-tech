@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import ErrorHandler from '../../../utils/ErrorHandler'
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import JobExperienceModel from '../../../models/experiences/jobExperience/JobExperienceModel'
-import { isNotNull, isNull } from '~/utils/type/TypeGuard'
+import { isNotNull, isNull } from '~/utils/types/TypeGuard'
 
 export default async function removeJobExperienceImageController(
   req: Request,

@@ -6,12 +6,15 @@ import projectExperienceRoutes from './routes/experiences/projectExperienceRoute
 import jobExperienceRoutes from './routes/experiences/jobExperienceRoutes'
 import trainingExperienceRoutes from './routes/experiences/trainingExperienceRoutes'
 import authRoutes from './routes/authRoutes'
+import backupRoutes from './routes/backupRoutes'
 
 const app = express()
 app.use(express.json())
 
 app.use('/api/uploads', express.static('uploads'))
+app.use('/api/backups', express.static('backups'))
 
+app.use('/api/backup', backupRoutes)
 app.use('/api/auth', authRoutes)
 
 app.use('/api/hard-skills', hardSkillRoutes)

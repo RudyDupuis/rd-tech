@@ -158,7 +158,11 @@ fetchDate()
           class="cursor-pointer hover:opacity-50"
         />
       </div>
-      <FetchDataComp :isloading="skillIsLoading" :has-data="hardSkills.length !== 0" />
+      <FetchDataComp
+        v-if="hardSkills"
+        :isloading="skillIsLoading"
+        :has-data="hardSkills.length !== 0"
+      />
     </section>
 
     <section id="parcours" class="flex flex-col items-center py-20">
@@ -183,7 +187,11 @@ fetchDate()
         <ExperienceComp :experience="experience" />
       </div>
       <p v-if="filteredExperiences.length === 0 && experiences.length > 0">Aucun résultat ...</p>
-      <FetchDataComp :isloading="experienceIsLoading" :has-data="experiences.length !== 0" />
+      <FetchDataComp
+        v-if="experiences"
+        :isloading="experienceIsLoading"
+        :has-data="experiences.length !== 0"
+      />
     </section>
   </main>
 </template>

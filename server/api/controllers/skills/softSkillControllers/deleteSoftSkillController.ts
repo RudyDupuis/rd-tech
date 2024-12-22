@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import SoftSkillModel from '../../../models/skills/softSkill/SoftSkillModel'
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isNull } from '~/utils/type/TypeGuard'
+import { isNull } from '~/utils/types/TypeGuard'
 
 export default async function deleteSoftSkillController(
   req: Request,

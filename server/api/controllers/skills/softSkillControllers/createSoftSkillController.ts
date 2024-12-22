@@ -3,7 +3,7 @@ import SoftSkillDto from '../../../models/skills/softSkill/SoftSkillDto'
 import SoftSkillModel from '../../../models/skills/softSkill/SoftSkillModel'
 import SoftSkill from '../../../models/skills/softSkill/SoftSkill'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isUndefined } from '~/utils/type/TypeGuard'
+import { isUndefined } from '~/utils/types/TypeGuard'
 
 export default async function createSoftSkillController(
   req: Request,

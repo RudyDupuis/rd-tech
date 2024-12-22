@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router'
 import useIsSmallScreen from '~/utils/helpers/useIsSmallScreen'
-import { isDefined } from '~/utils/type/TypeGuard'
+import { isDefined } from '~/utils/types/TypeGuard'
 
 const route = useRoute()
 const isSmallScreen = useIsSmallScreen()

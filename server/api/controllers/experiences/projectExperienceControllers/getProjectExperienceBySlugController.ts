@@ -3,7 +3,7 @@ import ProjectExperienceModel from '../../../models/experiences/projectExperienc
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
 import ErrorHandler from '../../../utils/ErrorHandler'
 import ProjectExperience from '~/server/api/models/experiences/projectExperience/ProjectExperience'
-import { isNull } from '~/utils/type/TypeGuard'
+import { isNull } from '~/utils/types/TypeGuard'
 
 export default async function getProjectExperienceBySlugController(
   req: Request,

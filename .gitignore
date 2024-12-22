@@ -28,3 +28,7 @@ uploads/experiences/*
 !uploads/experiences/.gitignore
 uploads/skills/*
 !uploads/skills/.gitignore
+
+# Backup files
+backups/*
+!backups/.gitignore

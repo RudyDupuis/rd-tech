@@ -20,16 +20,12 @@ async function handleSubmit() {
   try {
     const response = await api.postData('auth', loginInfo.value)
 
-    if (response.message) {
-      errorMessage.value = response.message
-    }
-
     if (response.token) {
       localStorage.setItem('authToken', response.token)
       props.addToken()
     }
-  } catch {
-    errorMessage.value = 'Une erreur inattendue est apparue.'
+  } catch (error: Error | unknown) {
+    errorMessage.value = error instanceof Error ? error.message : 'Une erreur est survenue'
   }
 }
 </script>
@@ -41,7 +37,7 @@ async function handleSubmit() {
     <div>
       <form @submit.prevent="handleSubmit">
         <input v-model="loginInfo.username" type="text" placeholder="Username" required />
-        <input v-model="loginInfo.password" type="text" placeholder="Password" required />
+        <input v-model="loginInfo.password" type="password" placeholder="Password" required />
 
         <button type="submit" class="button mt-10">Se connecter</button>
       </form>

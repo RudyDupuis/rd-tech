@@ -4,7 +4,7 @@ import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import JobExperienceModel from '../../../models/experiences/jobExperience/JobExperienceModel'
 import { JobExperienceDto } from '../../../models/experiences/jobExperience/JobExperienceDto'
 import JobExperience from '~/server/api/models/experiences/jobExperience/JobExperience'
-import { isDefined, isNotNull, isNull } from '~/utils/type/TypeGuard'
+import { isDefined, isNotNull, isNull } from '~/utils/types/TypeGuard'
 
 export default async function updateJobExperienceController(
   req: Request,

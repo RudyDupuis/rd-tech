@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import multer from 'multer'
-import { isUndefined } from '~/utils/type/TypeGuard'
+import { isUndefined } from '~/utils/types/TypeGuard'
+import { authenticateToken } from '../middleswares/authMiddleware'
 
 interface AuthRequestBody {
   username: string | undefined
@@ -35,7 +36,7 @@ router.post(
 
     try {
       const token = jwt.sign({ userId: 1 }, process.env.JWT_SECRET, {
-        expiresIn: '1h'
+        expiresIn: '1d'
       })
 
       res.json({ token })
@@ -45,5 +46,9 @@ router.post(
     }
   }
 )
+
+router.get('/try-token', authenticateToken, async (_: Request, res: Response): Promise<void> => {
+  res.json({ message: 'Token valide' })
+})
 
 export default router

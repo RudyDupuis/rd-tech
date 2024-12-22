@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import TrainingExperienceModel from '../../../models/experiences/trainingExperience/TrainingExperienceModel'
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isNotNull, isNull } from '~/utils/type/TypeGuard'
+import { isNotNull, isNull } from '~/utils/types/TypeGuard'
 
 export default async function deleteTrainingExperienceController(
   req: Request,

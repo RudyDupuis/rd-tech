@@ -3,7 +3,7 @@ import {
   PostJobExperience,
   PutJobExperience
 } from '~/utils/entities/experiences/JobExperience'
-import { isDefined } from '~/utils/type/TypeGuard'
+import { isDefined } from '~/utils/types/TypeGuard'
 
 export interface JobExperienceJson {
   id: string

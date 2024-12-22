@@ -1,4 +1,4 @@
-import { isDefined } from '../type/TypeGuard'
+import { isDefined } from '../types/TypeGuard'
 
 export function formatExperienceDate(startDate: Date, endDate: Date | undefined) {
   const formattedStartDate = startDate.toLocaleDateString('fr-FR', {

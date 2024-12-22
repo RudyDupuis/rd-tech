@@ -14,7 +14,7 @@ import { SkillApi } from '~/utils/api/SkillApi'
 import { JobExperienceMapper } from '~/utils/mappers/experiences/JobExperienceMapper'
 import { ProjectExperienceMapper } from '~/utils/mappers/experiences/ProjectExperienceMapper'
 import { TrainingExperienceMapper } from '~/utils/mappers/experiences/TrainingExperienceMapper'
-import { isDefined } from '~/utils/type/TypeGuard'
+import { isDefined } from '~/utils/types/TypeGuard'
 import { computed, ref, watch } from 'vue'
 
 interface Props {
@@ -33,7 +33,10 @@ const hardSkills = ref<Array<GetHardSkill>>([])
 
 const thumbnailInput = ref<HTMLInputElement | undefined>(undefined)
 const thumbnailUrl = computed<string>(() => {
-  return isPutExperience(editingExperience.value) ? editingExperience.value.thumbnailPath : ''
+  return isPutExperience(editingExperience.value) &&
+    isDefined(editingExperience.value.thumbnailPath)
+    ? editingExperience.value.thumbnailPath
+    : ''
 })
 const imagesInput = ref<HTMLInputElement | undefined>(undefined)
 
@@ -250,14 +253,18 @@ hardSkills.value = await skillApi.getAllHardSkills()
     </div>
 
     <div
-      v-if="isPutExperience(editingExperience) && isDefined(editingExperience.imagesPath)"
+      v-if="
+        isPutExperience(editingExperience) &&
+        isProjectExperience(editingExperience) &&
+        isDefined(editingExperience.imagesPath)
+      "
       class="flex flex-col items-center mb-2"
     >
       <p>Images</p>
       <div
         v-for="(url, index) in editingExperience.imagesPath"
         :key="index"
-        @dblclick="handleRemoveImage(url.replace(backUrl, ''))"
+        @dblclick="handleRemoveImage(url)"
       >
         <img
           :src="'/api/' + url"

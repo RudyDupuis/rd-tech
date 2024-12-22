@@ -4,7 +4,7 @@ import SoftSkillDto from '../../../models/skills/softSkill/SoftSkillDto'
 import SoftSkillModel from '../../../models/skills/softSkill/SoftSkillModel'
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isDefined, isNull } from '~/utils/type/TypeGuard'
+import { isDefined, isNull } from '~/utils/types/TypeGuard'
 
 export default async function updateSoftSkillController(
   req: Request,

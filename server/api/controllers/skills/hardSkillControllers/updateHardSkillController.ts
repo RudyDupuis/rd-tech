@@ -4,7 +4,7 @@ import HardSkill from '../../../models/skills/hardSkill/HardSkill'
 import HardSkillModel from '../../../models/skills/hardSkill/HardSkillModel'
 import DeleteImageHandler from '../../../utils/DeleteImageHandler'
 import ErrorHandler from '../../../utils/ErrorHandler'
-import { isDefined, isNull } from '~/utils/type/TypeGuard'
+import { isDefined, isNull } from '~/utils/types/TypeGuard'
 
 export default async function updateHardSkillController(
   req: Request,

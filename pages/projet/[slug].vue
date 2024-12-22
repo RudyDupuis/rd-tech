@@ -2,7 +2,7 @@
 import { GetProjectExperience } from '~/utils/entities/experiences/ProjectExperience'
 import { ExperienceApi } from '@/utils/api/ExperienceApi'
 import { formatExperienceDate } from '~/utils/helpers/formatting'
-import { isDefined } from '~/utils/type/TypeGuard'
+import { isDefined } from '~/utils/types/TypeGuard'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -67,11 +67,11 @@ fetchData()
       <div class="flex items-center justify-center" v-if="carouselUrls.length != 0">
         <p
           v-if="carouselUrls.length > 1"
-          class="hover:text-grey_2 text-4xl cursor-pointer select-none mr-3"
-          :class="{ 'text-grey_2': carouselIndex === 0 }"
+          class="hover:opacity-50 text-4xl cursor-pointer select-none mr-3"
+          :class="{ 'opacity-20': carouselIndex === 0 }"
           @click="handleCarousel('left')"
         >
-          ⮜
+          <CaretLeftSvg />
         </p>
         <img
           :src="carouselUrls[carouselIndex]"
@@ -80,13 +80,13 @@ fetchData()
         />
         <p
           v-if="carouselUrls.length > 1"
-          class="hover:text-grey_2 text-4xl cursor-pointer select-none ml-3"
+          class="hover:opacity-50 text-4xl cursor-pointer select-none ml-3"
           :class="{
-            'text-grey_2': carouselIndex === carouselUrls.length - 1
+            'opacity-20': carouselIndex === carouselUrls.length - 1
           }"
           @click="handleCarousel('right')"
         >
-          ⮞
+          <CaretRightSvg />
         </p>
       </div>
     </section>

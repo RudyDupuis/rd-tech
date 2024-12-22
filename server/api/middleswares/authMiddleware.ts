@@ -1,6 +1,6 @@
 import { Response, NextFunction, Request } from 'express'
 import jwt from 'jsonwebtoken'
-import { isUndefined } from '~/utils/type/TypeGuard'
+import { isUndefined } from '~/utils/types/TypeGuard'
 
 export function authenticateToken(req: Request, res: Response, next: NextFunction): void {
   if (isUndefined(process.env.JWT_SECRET)) {

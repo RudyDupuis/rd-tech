@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: database
+    volumes:
+      - pgdb:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ..:/app
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://admin:secret@db:5432/database
+volumes:
+  pgdb:

@@ -1,0 +1,11 @@
+{
+    "name": "RD-Tech Dev Container",
+    "dockerComposeFile": [
+        "docker-compose.dev.yml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/app",
+    "overrideCommand": true,
+    "postCreateCommand": "npm install",
+    "postAttachCommand": "npm run dev"
+}

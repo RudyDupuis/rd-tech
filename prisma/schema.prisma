@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model SoftSkill {
+  id   Int    @id @default(autoincrement())
+  name String
+  svg  String
+}
+
+enum Mastery {
+  advanced
+  intermediate
+  beginner
+}
+
+model HardSkill {
+  id                 Int                 @id @default(autoincrement())
+  name               String
+  svg                String
+  mastery            Mastery
+  projectExperiences ProjectExperience[]
+}
+
+model TrainingExperience {
+  id               Int       @id @default(autoincrement())
+  name             String
+  shortDescription String
+  startDate        DateTime
+  endDate          DateTime?
+  thumbnail        Bytes?
+}
+
+model JobExperience {
+  id               Int       @id @default(autoincrement())
+  name             String
+  shortDescription String
+  startDate        DateTime
+  endDate          DateTime?
+  thumbnail        Bytes?
+}
+
+model ProjectExperience {
+  id               Int         @id @default(autoincrement())
+  name             String
+  slug             String      @unique
+  shortDescription String
+  longDescription  String
+  isFavorite       Boolean     @default(false)
+  startDate        DateTime
+  endDate          DateTime?
+  thumbnail        Bytes?
+  images           Bytes[]
+  projectLink      String?
+  codeLink         String?
+  hardSkills       HardSkill[]
+}

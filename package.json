@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "ci": "nuxt prepare",
     "fix": "prettier --write . && eslint . --fix",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",

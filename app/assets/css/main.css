@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Kodchasan-Regular';
+  font-family: "Kodchasan-Regular";
   src: url(../fonts/Kodchasan-Regular.ttf);
   font-display: swap;
 }
 @font-face {
-  font-family: 'Kodchasan-Medium';
-  src:  url(../fonts/Kodchasan-Medium.ttf);
+  font-family: "Kodchasan-Medium";
+  src: url(../fonts/Kodchasan-Medium.ttf);
   font-display: swap;
 }
 @font-face {
-  font-family: 'Kodchasan-Bold';
+  font-family: "Kodchasan-Bold";
   src: url(../fonts/Kodchasan-Bold.ttf);
   font-display: swap;
 }
@@ -20,7 +20,7 @@
   --color-primary: #1282a2;
   --color-dark-primary: #12728d;
   --color-light-primary: #97ccdb;
-  --color-secondary:  #be8242;
+  --color-secondary: #be8242;
   --color-false: #d85b3f;
   --color-true: #739b2d;
   --color-light: #efefef;
@@ -29,54 +29,54 @@
   --color-grey-2: #b8b8b8;
   --color-grey-3: #e0e0e0;
 
-  --font-primary-regular:  Kodchasan-Regular, Arial;
+  --font-primary-regular: Kodchasan-Regular, Arial;
   --font-primary-medium: Kodchasan-Medium, Arial;
-  --font-primary-bold:  Kodchasan-Bold, Arial;
+  --font-primary-bold: Kodchasan-Bold, Arial;
 }
 
 @layer base {
-    * {
-        @apply font-primary-regular text-dark leading-7;
-    }
+  * {
+    @apply font-primary-regular text-dark leading-7;
+  }
 
-    body {
-        @apply bg-light;
-    }
+  body {
+    @apply bg-light;
+  }
 
-    main {
-        @apply min-h-screen;
-    }
+  main {
+    @apply min-h-screen;
+  }
 
-    a,
-    a:visited {
-        @apply font-primary-bold;
-    }
-    a:hover {
-        @apply text-secondary;
-    }
+  a,
+  a:visited {
+    @apply font-primary-bold;
+  }
+  a:hover {
+    @apply text-secondary;
+  }
 
-    strong {
-        @apply font-primary-bold font-normal;
-    }
+  strong {
+    @apply font-primary-bold font-normal;
+  }
 }
 
 @layer utilities {
-    .large-title {
-        @apply font-primary-bold text-2xl tracking-widest text-center;
-    }
-    .medium-title {
-        @apply font-primary-bold text-xl tracking-widest text-center;
-    }
-    .small-title {
-        @apply font-primary-bold text-lg tracking-widest;
-    }
+  .large-title {
+    @apply font-primary-bold text-2xl tracking-widest text-center;
+  }
+  .medium-title {
+    @apply font-primary-bold text-xl tracking-widest text-center;
+  }
+  .small-title {
+    @apply font-primary-bold text-lg tracking-widest;
+  }
 }
 
 @layer components {
-    .button {
-        @apply cursor-pointer inline-block text-center py-4 w-10/12 md:w-auto px-0 md:px-16 bg-primary text-xs rounded-lg text-light tracking-wider font-primary-bold uppercase;
-    }
-    .button:hover {
-        @apply bg-secondary text-light;
-    }
+  .button {
+    @apply cursor-pointer inline-block text-center py-4 w-10/12 md:w-auto px-0 md:px-16 bg-primary text-xs rounded-lg text-light tracking-wider font-primary-bold uppercase;
+  }
+  .button:hover {
+    @apply bg-secondary text-light;
+  }
 }

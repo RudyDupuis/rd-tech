@@ -7,16 +7,16 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   modules: ["@nuxt/eslint", "nuxt-gtag"],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss()]
   },
   components: [
     {
       path: "~/components",
-      pathPrefix: false,
-    },
+      pathPrefix: false
+    }
   ],
   gtag: {
     initMode: "manual",
-    id: "G-VSNBTJ5G4B",
-  },
+    id: "G-VSNBTJ5G4B"
+  }
 });

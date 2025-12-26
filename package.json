@@ -10,7 +10,9 @@
     "db:migrate": "prisma migrate deploy",
     "db:migrate:add": "prisma migrate dev",
     "db:reset": "prisma migrate reset --force",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "analyse:check": "eslint",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@nuxt/eslint": "^1.12.1",

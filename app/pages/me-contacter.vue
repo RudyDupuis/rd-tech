@@ -5,9 +5,9 @@ useHead({
     {
       name: "description",
       content:
-        "Besoin d'un développeur Web et Web mobile passionné par l'UX pour réaliser votre projet numérique ? Je suis Rudy Dupuis, disponible pour échanger sur vos besoins en développement web.",
-    },
-  ],
+        "Besoin d'un développeur Web et Web mobile passionné par l'UX pour réaliser votre projet numérique ? Je suis Rudy Dupuis, disponible pour échanger sur vos besoins en développement web."
+    }
+  ]
 });
 
 const emailAddress = ref<string>("dupuisrudypro@gmail.com");
@@ -32,9 +32,9 @@ const copyEmail = () => {
     </div>
     <button class="button" @click="copyEmail">Copier l'adresse email</button>
     <p>
-      <strong class="text-true">{{
-        showSuccesMessage ? "Mail copié !" : "&nbsp;"
-      }}</strong>
+      <strong class="text-true">
+        {{ showSuccesMessage ? "Mail copié !" : "&nbsp;" }}
+      </strong>
     </p>
     <ToolsboxFullSvg />
   </main>
